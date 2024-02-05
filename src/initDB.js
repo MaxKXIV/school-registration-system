@@ -21,10 +21,10 @@ async function connect(){
     };
     try {
         await sql.connect(config);
-        const result = await sql.query`select * from students`
-        console.log(result);
+        return;
     } catch (err) {
         console.log(err);
+        return;
     }
 }
 
@@ -42,7 +42,7 @@ parser.on('readable',()=>{
         if(name[2]!==''){
             //Adds the active status to the name
             const nameWithActive = name.slice(0,3);
-            nameWithActive.push(0);
+            nameWithActive.push(Math.round(Math.random()));//random if active
             names.push(nameWithActive);
         }
     }
@@ -52,11 +52,34 @@ parser.on('readable',()=>{
 parser.on('error',(error)=>{
     console.log(error);
 });
+
+function createNewStudentTable(){
+    const table = new sql.Table('students');
+    table.create = true;
+    table.columns.add('first_name', sql.VarChar(50), {nullable: false})
+    table.columns.add('last_name', sql.VarChar(50), {nullable: false})
+    table.columns.add('gender', sql.NChar(10), {nullable: false})
+    table.columns.add('active', sql.Bit, {nullable: false})
+    return table;
+}
+
 //Do this when parser finishes
 parser.on('end',()=>{
-    console.log(names);
+    connect().then(()=>{
+        const request = new sql.Request();
+        let table = createNewStudentTable();
+        // bulk inserts students from array 1000 at time
+        for(let i=0;i<names.length;i++){
+            table.rows.add(names[i][0],names[i][1],names[i][2],names[i][3]);
+            if(i%1000===0 || (i===names.length-1)){
+                request.bulk(table, (err, result) => {
+                    console.log(result);
+                });
+                table = createNewStudentTable();
+            }
+        }
+    });
 });
-//Creates a strem to pipe into the parser 
-// fs.createReadStream(file).pipe(parser);
 
-connect();
+// Creates a strem to pipe into the parser 
+fs.createReadStream(file).pipe(parser);
