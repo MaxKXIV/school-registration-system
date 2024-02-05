@@ -23,6 +23,10 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
+### `npm run init-students`
+
+Runs the initDB.js file and inserts student data into the students table
+
 ## ER Diagram
 <img src='./images/er-diagram.png'/>
 
