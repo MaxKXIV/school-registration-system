@@ -1,7 +1,7 @@
 USE [school-registration-db]
 GO
 
-/****** Object:  Table [dbo].[courses]    Script Date: 2024-02-05 11:40:23 PM ******/
+/****** Object:  Table [dbo].[courses]    Script Date: 2024-02-06 1:16:33 AM ******/
 SET ANSI_NULLS ON
 GO
 
@@ -9,7 +9,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[courses](
-	[course_id] [int] NOT NULL,
+	[course_id] [int] NOT NULL IDENTITY(1,1),
 	[course_symbol] [nchar](10) NOT NULL,
 	[course_number] [int] NOT NULL,
 	[course_name] [nvarchar](50) NOT NULL,
