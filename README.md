@@ -36,3 +36,5 @@ Make sure SQL Server Authentication is on:
 See this video: <a href='https://www.youtube.com/watch?v=nKlIMvgL1vI'>link</a>
 <img src='./images\troubleshooting-login.png'/>
 
+Enable TCP/IP for sql server:
+<img src='./images/troubleshooting-enable-tcp.png'/>
