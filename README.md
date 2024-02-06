@@ -25,7 +25,11 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ### `npm run init-students`
 
-Runs the initDB.js file and inserts student data into the students table
+Runs the initStudents.js file and inserts student data into the students table
+
+### `npm run init-courses`
+
+Runs the initCourses.js file and inserts student data into the students table
 
 ## ER Diagram
 <img src='./images/er-diagram.png'/>
