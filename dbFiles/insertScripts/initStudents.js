@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 dotenv.config()
 
 const names=[];
-const file = './name_dataset/CA_200000.csv';
+const file = './dataset/CA_200000.csv';
 const parser = parse({delimiter:','});
 
 async function connect(){
