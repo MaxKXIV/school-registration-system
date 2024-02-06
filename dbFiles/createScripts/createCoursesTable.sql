@@ -12,7 +12,7 @@ CREATE TABLE [dbo].[courses](
 	[course_id] [int] NOT NULL IDENTITY(1,1),
 	[course_symbol] [nchar](10) NOT NULL,
 	[course_number] [int] NOT NULL,
-	[course_name] [nvarchar](50) NOT NULL,
+	[course_name] [nvarchar](100) NOT NULL,
 	[credits] [smallint] NOT NULL,
  CONSTRAINT [PK_courses] PRIMARY KEY CLUSTERED 
 (

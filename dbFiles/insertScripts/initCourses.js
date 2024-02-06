@@ -59,16 +59,25 @@ parser.on('end',()=>{
     });
     connect().then(()=>{
         const request = new sql.Request();
+        
         const table = new sql.Table('courses');
         table.create = true;
         table.columns.add('course_symbol', sql.NChar(10), {nullable: false})
         table.columns.add('course_number', sql.Int, {nullable: false})
-        table.columns.add('course_name', sql.NVarChar(50), {nullable: false})
+        table.columns.add('course_name', sql.NVarChar(100), {nullable: false})
         table.columns.add('credits', sql.SmallInt, {nullable: false})
-        for(let i=0,course=coursesFormatted[i];i<coursesFormatted.length;i++){
-            table.rows.add(course[0],course[1],course[2],course[3]);
+
+        for(let i=0;i<coursesFormatted.length;i++){
+            table.rows.add(
+                coursesFormatted[i][0],
+                coursesFormatted[i][1],
+                coursesFormatted[i][2],
+                coursesFormatted[i][3]);
         }
         request.bulk(table, (err, result) => {
+            if(err){
+                console.log(err);
+            }
             console.log(result);
         });
     });
