@@ -1,4 +1,4 @@
-USE [CMPT319Project]
+USE [school-registration-db]
 GO
 
 /****** Object:  Table [dbo].[classroomTable]    Script Date: 1/31/2024 12:16:26 PM ******/
