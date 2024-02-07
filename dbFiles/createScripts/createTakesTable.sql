@@ -27,12 +27,8 @@ CREATE TABLE [dbo].[takes](
 GO
 
 
-ALTER TABLE [dbo].[takes]  WITH CHECK ADD FOREIGN KEY([section_id],[semester],[year])
-REFERENCES [dbo].[sections] ([section_id],[semester],[year])
-GO
-
-ALTER TABLE [dbo].[takes]  WITH CHECK ADD FOREIGN KEY([course_id])
-REFERENCES [dbo].[courses] ([course_id])
+ALTER TABLE [dbo].[takes]  WITH CHECK ADD FOREIGN KEY([section_id],[semester],[year],[course_id])
+REFERENCES [dbo].[sections] ([section_id],[semester],[year],[course_id])
 GO
 
 ALTER TABLE [dbo].[takes]  WITH CHECK ADD FOREIGN KEY([student_id])
