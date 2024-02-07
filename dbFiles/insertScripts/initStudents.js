@@ -78,6 +78,7 @@ parser.on("end", () => {
         table = createNewStudentTable();
       }
     }
+    sql.close();
   });
 });
 
