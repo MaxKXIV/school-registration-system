@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const names = [];
-const file = "./dataset/CA_200000.csv";
+const file = "./dataset/CA_TAIL_200.csv";
 const parser = parse({ delimiter: "," });
 
 const config = {
@@ -29,13 +29,7 @@ parser.on("readable", () => {
     if (!regex.test(name[0]) || !regex.test(name[1])) {
       continue;
     }
-    //removes all names without a gender
-    if (name[2] !== "") {
-      //Adds the active status to the name
-      const nameWithActive = name.slice(0, 3);
-      nameWithActive.push(Math.round(Math.random())); //random if active
-      names.push(nameWithActive);
-    }
+    names.push(name);
   }
 });
 
@@ -45,12 +39,10 @@ parser.on("error", (error) => {
 });
 
 function createNewStudentTable() {
-  const table = new sql.Table("students");
+  const table = new sql.Table("teachers");
   table.create = true;
   table.columns.add("first_name", sql.VarChar(50), { nullable: false });
   table.columns.add("last_name", sql.VarChar(50), { nullable: false });
-  table.columns.add("gender", sql.NChar(10), { nullable: false });
-  table.columns.add("active", sql.Bit, { nullable: false });
   table.columns.add("department_id", sql.Int, { nullable: false });
   return table;
 }
@@ -62,24 +54,15 @@ parser.on("end", () => {
     let table = createNewStudentTable();
     // bulk inserts students from array 1000 at time
     for (let i = 0; i < names.length; i++) {
-      table.rows.add(
-        names[i][0],
-        names[i][1],
-        names[i][2],
-        names[i][3],
-        Math.floor(Math.random() * 29) + 1,
-      );
-      if (i % 1000 === 0 || i === names.length - 1) {
-        request.bulk(table, (err, result) => {
-          if (err) {
-            console.log(err);
-          } else {
-            console.log(result);
-          }
-        });
-        table = createNewStudentTable();
-      }
+      table.rows.add(names[i][0], names[i][1], (i % 29) + 1);
     }
+    request.bulk(table, (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(result);
+      }
+    });
   });
 });
 

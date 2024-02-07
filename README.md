@@ -1,12 +1,16 @@
 # School Registration System
+
 ## Requirements
-- [ ]  Stored Procedures  
-- [ ]  Materialized Views
-- [ ]  Transactions
-- [ ]  Indicies
+
+- [ ] Stored Procedures
+- [ ] Materialized Views
+- [ ] Transactions
+- [ ] Indicies
 
 ## .env
+
 Create .env file with the required information:
+
 ```
 DB_USER="YOUR_USERNAME"
 DB_PASSWORD="YOUR_PASSWORD"
@@ -31,11 +35,22 @@ Runs the initStudents.js file and inserts student data into the students table
 
 Runs the initCourses.js file and inserts student data into the students table
 
+### `npm run init-prereqs`
+
+Runs the initPrereqs.js file and generates prereqs for some courses
+
+### `npm run init-teachers`
+
+Runs the initTeacherss.js file and generates teachers
+
 ## ER Diagram
+
 <img src='./images/er-diagram.png'/>
 
-## Troubleshooting 
+## Troubleshooting
+
 ### Login Error
+
 Make sure SQL Server Authentication is on:
 See this video: <a href='https://www.youtube.com/watch?v=nKlIMvgL1vI'>link</a>
 <img src='./images\troubleshooting-login.png'/>

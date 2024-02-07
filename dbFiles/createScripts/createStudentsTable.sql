@@ -14,6 +14,7 @@ CREATE TABLE [dbo].[students](
 	[last_name] [nvarchar](50) NOT NULL,
 	[gender] [nchar](10) NOT NULL,
 	[active] [bit] NOT NULL,
+	[department_id] [int] NOT NULL FOREIGN KEY REFERENCES departments(department_id),
  CONSTRAINT [PK_students] PRIMARY KEY CLUSTERED 
 (
 	[student_id] ASC

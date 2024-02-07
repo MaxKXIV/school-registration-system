@@ -1,4 +1,4 @@
-USE [CMPT319Project]
+USE [school-registration-db]
 GO
 
 /****** Object:  Table [dbo].[classroomTable]    Script Date: 1/31/2024 12:16:26 PM ******/
@@ -8,11 +8,11 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[classroomTable](
+CREATE TABLE [dbo].[classrooms](
 	[room_number] [nchar](10) NOT NULL,
 	[building] [nchar](10) NOT NULL,
 	[capacity] [numeric](18, 0) NOT NULL,
- CONSTRAINT [PK_classroomTable] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_classrooms] PRIMARY KEY CLUSTERED 
 (
 	[room_number] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]

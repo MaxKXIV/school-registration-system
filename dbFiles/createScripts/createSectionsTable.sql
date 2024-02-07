@@ -17,6 +17,8 @@ CREATE TABLE [dbo].[sections](
 	[end_time] [time](7) NULL,
 	[day] [smallint] NOT NULL,
 	[capacity] [int] NOT NULL,
+	[teacher_id] [int] NULL FOREIGN KEY REFERENCES teachers(teacher_id),
+	[room_number] [nchar](10) NULL FOREIGN KEY REFERENCES classrooms(room_number),
  CONSTRAINT [PK_sections] PRIMARY KEY CLUSTERED 
 (
 	[section_id] ASC,

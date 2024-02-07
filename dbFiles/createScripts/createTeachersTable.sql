@@ -12,7 +12,7 @@ CREATE TABLE [dbo].[teachers](
 	[teacher_id] [int] NOT NULL IDENTITY(1,1) PRIMARY KEY,
 	[first_name] [nvarchar](50) NOT NULL,
 	[last_name] [nvarchar](50) NOT NULL,
-	[dept_id] [nvarchar](50) NOT NULL
+	[department_id] [int] NOT NULL FOREIGN KEY REFERENCES departments(department_id)
 ) ON [PRIMARY]
 GO
 
