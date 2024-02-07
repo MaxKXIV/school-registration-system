@@ -86,7 +86,6 @@ parser.on("end", () => {
       }
       console.log(result);
     });
-    sql.close();
   });
 });
 

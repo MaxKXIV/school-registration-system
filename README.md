@@ -39,6 +39,10 @@ Runs the initCourses.js file and inserts student data into the students table
 
 Runs the initPrereqs.js file and generates prereqs for some courses
 
+### `npm run init-teachers`
+
+Runs the initTeacherss.js file and generates teachers
+
 ## ER Diagram
 
 <img src='./images/er-diagram.png'/>

@@ -67,6 +67,5 @@ sql.connect(config).then(async () => {
       console.log("here", err);
     }
     console.log(result);
-    sql.close();
   });
 });
