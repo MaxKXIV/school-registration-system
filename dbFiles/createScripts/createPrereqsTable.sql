@@ -9,22 +9,24 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[prereqs](
-	[course_id] [int] NOT NULL,
-	[prereq_id] [int] NOT NULL,
+	[course_symbol] [nchar](10) NOT NULL,
+	[course_number] [int] NOT NULL,
+	[prereq_symbol] [nchar](10) NOT NULL,
+	[prereq_number] [int] NOT NULL,
  CONSTRAINT [PK_prereqs] PRIMARY KEY CLUSTERED 
 (
-	[course_id] ASC,
-	[prereq_id] ASC
+	[course_symbol] ASC,
+	[course_number] ASC,
+	[prereq_symbol] ASC,
+	[prereq_number] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 
-ALTER TABLE [dbo].[prereqs]  WITH CHECK ADD FOREIGN KEY([course_id])
-REFERENCES [dbo].[courses] ([course_id])
+ALTER TABLE [dbo].[prereqs]  WITH CHECK ADD FOREIGN KEY([course_symbol],[course_number])
+REFERENCES [dbo].[courses] ([course_symbol],[course_number])
 GO
 
-ALTER TABLE [dbo].[prereqs]  WITH CHECK ADD FOREIGN KEY([prereq_id])
-REFERENCES [dbo].[courses] ([course_id])
+ALTER TABLE [dbo].[prereqs]  WITH CHECK ADD FOREIGN KEY([prereq_symbol],[prereq_number])
+REFERENCES [dbo].[courses] ([course_symbol],[course_number])
 GO
-
-
