@@ -8,25 +8,16 @@ const names = [];
 const file = "./dataset/CA_TAIL_200.csv";
 const parser = parse({ delimiter: "," });
 
-async function connect() {
-  const config = {
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    server: process.env.DB_SERVER,
-    database: process.env.DB_NAME,
-    options: {
-      encrypt: false,
-      trustServerCertificate: true,
-    },
-  };
-  try {
-    await sql.connect(config);
-    return;
-  } catch (err) {
-    console.log(err);
-    return;
-  }
-}
+const config = {
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  server: process.env.DB_SERVER,
+  database: process.env.DB_NAME,
+  options: {
+    encrypt: false,
+    trustServerCertificate: true,
+  },
+};
 
 //Do this when something readable is passed into the parser
 parser.on("readable", () => {
@@ -58,16 +49,12 @@ function createNewStudentTable() {
 
 //Do this when parser finishes
 parser.on("end", () => {
-  connect().then(() => {
+  sql.connect(config).then(() => {
     const request = new sql.Request();
     let table = createNewStudentTable();
     // bulk inserts students from array 1000 at time
     for (let i = 0; i < names.length; i++) {
-      table.rows.add(
-        names[i][0],
-        names[i][1],
-        Math.floor(Math.random() * 29) + 1,
-      );
+      table.rows.add(names[i][0], names[i][1], (i % 29) + 1);
     }
     request.bulk(table, (err, result) => {
       if (err) {
