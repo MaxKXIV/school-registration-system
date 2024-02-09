@@ -1,5 +1,7 @@
 # School Registration System
 
+## TO USE INSERT SCRIPTS ADD `"type":"module"` TO YOUR PACKAGE.JSON
+
 ## Requirements
 
 - [ ] Stored Procedures
