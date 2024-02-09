@@ -12,7 +12,8 @@ CREATE TABLE [dbo].[takes](
 	[section_id] [int] NOT NULL,
 	[semester] [nvarchar](50) NOT NULL,
 	[year] [int] NOT NULL,
-	[course_id] [int] NOT NULL,
+	[course_symbol] [nchar](10) NOT NULL,
+	[course_number] [int] NOT NULL,
 	[student_id] [int] NOT NULL,
 	[grades] [smallInt] NULL,
  CONSTRAINT [PK_takes] PRIMARY KEY CLUSTERED 
@@ -20,15 +21,16 @@ CREATE TABLE [dbo].[takes](
 	[section_id] ASC,
 	[semester] ASC,
 	[year] ASC,
-	[course_id] ASC,
+	[course_symbol] ASC,
+	[course_number] ASC,
 	[student_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
 
 
-ALTER TABLE [dbo].[takes]  WITH CHECK ADD FOREIGN KEY([section_id],[semester],[year],[course_id])
-REFERENCES [dbo].[sections] ([section_id],[semester],[year],[course_id])
+ALTER TABLE [dbo].[takes]  WITH CHECK ADD FOREIGN KEY([section_id],[semester],[year],[course_symbol],[course_number])
+REFERENCES [dbo].[sections] ([section_id],[semester],[year],[course_symbol],[course_number])
 GO
 
 ALTER TABLE [dbo].[takes]  WITH CHECK ADD FOREIGN KEY([student_id])

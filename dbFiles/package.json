@@ -1,0 +1,22 @@
+{
+  "name": "dbfiles",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "init-students": "node ./insertScripts/initStudents.js",
+    "init-courses": "node ./insertScripts/initCourses.js",
+    "init-prereqs": "node ./insertScripts/initPrereqs.js",
+    "init-teachers": "node ./insertScripts/initTeachers.js",
+    "init-sections": "node ./insertScripts/initSections.js",
+    "init-taken": "node ./insertScripts/initTakes.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "csv-parse": "^5.5.3",
+    "dotenv": "^16.4.1",
+    "mssql": "^10.0.2"
+  }
+}

@@ -12,10 +12,11 @@ CREATE TABLE [dbo].[sections](
 	[section_id] [int] NOT NULL,
 	[semester] [nvarchar](50) NOT NULL,
 	[year] [int] NOT NULL,
-	[course_id] [int] NOT NULL,
+	[course_symbol] [nchar](10) NOT NULL,
+	[course_number] [int] NOT NULL,
 	[start_time] [time](7) NULL,
 	[end_time] [time](7) NULL,
-	[day] [smallint] NOT NULL,
+	[day] [smallint] NULL,
 	[capacity] [int] NOT NULL,
 	[teacher_id] [int] NULL FOREIGN KEY REFERENCES teachers(teacher_id),
 	[room_number] [nchar](10) NULL FOREIGN KEY REFERENCES classrooms(room_number),
@@ -24,9 +25,14 @@ CREATE TABLE [dbo].[sections](
 	[section_id] ASC,
 	[semester] ASC,
 	[year] ASC,
-	[course_id] ASC
+	[course_symbol] ASC,
+	[course_number] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[sections]  WITH CHECK ADD FOREIGN KEY([course_symbol],[course_number])
+REFERENCES [dbo].[courses] ([course_symbol],[course_number])
 GO
 
 

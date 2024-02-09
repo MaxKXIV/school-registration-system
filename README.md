@@ -1,5 +1,11 @@
 # School Registration System
 
+## TO USE INSERT SCRIPTS
+
+- Create .env
+- `npm i`
+- `npm run init-xxxxx`
+
 ## Requirements
 
 - [ ] Stored Procedures
