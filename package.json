@@ -16,12 +16,6 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "init-students": "node ./dbFiles/insertScripts/initStudents.js",
-    "init-courses": "node ./dbFiles/insertScripts/initCourses.js",
-    "init-prereqs": "node ./dbFiles/insertScripts/initPrereqs.js",
-    "init-teachers": "node ./dbFiles/insertScripts/initTeachers.js",
-    "init-sections": "node ./dbFiles/insertScripts/initSections.js",
-    "init-taken": "node ./dbFiles/insertScripts/initTakes.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

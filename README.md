@@ -1,6 +1,10 @@
 # School Registration System
 
-## TO USE INSERT SCRIPTS ADD `"type":"module"` TO YOUR PACKAGE.JSON
+## TO USE INSERT SCRIPTS
+
+- Create .env
+- `npm i`
+- `npm run init-xxxxx`
 
 ## Requirements
 
