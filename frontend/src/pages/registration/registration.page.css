@@ -1,0 +1,15 @@
+.registration-container {
+  display: flex;
+}
+
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  background-color: aqua;
+}
+
+.classlist-container {
+  display: flex;
+  flex-direction: column;
+  background-color: aqua;
+}
