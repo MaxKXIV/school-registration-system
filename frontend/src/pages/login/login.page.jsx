@@ -1,12 +1,17 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import "./login.styles.css";
+import LoginBox from "../../components/loginbox/loginbox.compenent";
 
 const LoginPage = () => {
   return (
-    <Link to={"/RegistrationPage"}>
-      <div>
+    <div className="login-container">
+      {/* <Link to={"/RegistrationPage"}>
         <h1>LOGIN PAGE</h1>
+      </Link> */}
+      <div>
+        <LoginBox></LoginBox>
       </div>
-    </Link>
+    </div>
   );
 };
 

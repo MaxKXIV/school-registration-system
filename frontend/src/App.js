@@ -5,10 +5,9 @@ import RegistrationPage from "./pages/registration/registration.page";
 function App() {
   return (
     <BrowserRouter>
-      <h1>Nacewan Registration</h1>
       <Routes>
-        <Route path="/" element={<LoginPage />}></Route>
-        <Route path="/registration" element={<RegistrationPage />}></Route>
+        <Route path="/login" element={<LoginPage />}></Route>
+        <Route path="/" element={<RegistrationPage />}></Route>
       </Routes>
     </BrowserRouter>
   );
