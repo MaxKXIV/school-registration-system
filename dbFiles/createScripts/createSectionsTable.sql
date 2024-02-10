@@ -9,6 +9,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[sections](
+	[id] [int] NOT NULL identity(1,1),
 	[section_id] [int] NOT NULL,
 	[semester] [nvarchar](50) NOT NULL,
 	[year] [int] NOT NULL,
@@ -22,11 +23,7 @@ CREATE TABLE [dbo].[sections](
 	[room_number] [nchar](10) NULL FOREIGN KEY REFERENCES classrooms(room_number),
  CONSTRAINT [PK_sections] PRIMARY KEY CLUSTERED 
 (
-	[section_id] ASC,
-	[semester] ASC,
-	[year] ASC,
-	[course_symbol] ASC,
-	[course_number] ASC
+	[id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
