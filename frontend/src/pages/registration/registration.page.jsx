@@ -1,12 +1,16 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { useCourseSymbols } from "../../actions/useCourseSymbols";
 import Filters from "../../components/filters/filters.component";
 import SectionList from "../../components/sectionlist/sectionlist.component";
 
 const RegistrationPage = () => {
   const [currentSectionsList, setSectionsList] = useState([]);
   const [currentSearchParams, setSearchParams] = useSearchParams();
+  const [currentSymbols] = useCourseSymbols();
+
+  console.log(currentSymbols);
   useEffect(() => {
     const fetchSections = async () => {
       try {
@@ -21,8 +25,6 @@ const RegistrationPage = () => {
 
   const handleFilter = async () => {
     try {
-      // const response = await axios.get(window.location.href);
-
       const response = await axios.get(
         `http://localhost:8080/registration?${currentSearchParams.toString()}`,
       );
@@ -37,6 +39,7 @@ const RegistrationPage = () => {
     <div className="registration-container">
       <div className="filter-container">
         <Filters
+          courseSymbols={currentSymbols}
           setSearchParams={setSearchParams}
           currentSearchParams={currentSearchParams}
           handleFilter={handleFilter}

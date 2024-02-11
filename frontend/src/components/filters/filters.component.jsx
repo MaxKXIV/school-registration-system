@@ -1,17 +1,11 @@
 import "./filters.styles.css";
 import FilterSelectionBox from "../filter-selection-box/filter-selection-box.component";
-const Filters = ({ setSearchParams, currentSearchParams, handleFilter }) => {
-  const symbol = [
-    "CMPT",
-    "ACCT",
-    "MATH",
-    "AABB",
-    "BBAA",
-    "1234",
-    "1235",
-    "3546",
-    "POOP",
-  ];
+const Filters = ({
+  courseSymbols,
+  setSearchParams,
+  currentSearchParams,
+  handleFilter,
+}) => {
   const semester = ["Fall", "Winter"];
   const year = ["2024", "2025"];
   const days = ["Monday-Wednesday-Friday", "Tuesday-Thursday"];
@@ -38,7 +32,7 @@ const Filters = ({ setSearchParams, currentSearchParams, handleFilter }) => {
       <h1>Filters</h1>
       <div className="filters-container">
         <FilterSelectionBox
-          list={symbol}
+          list={courseSymbols}
           filterName={"symbol"}
           setSearchParam={setSearchParams}
           currentSearchParams={currentSearchParams}
