@@ -1,5 +1,5 @@
 import express from "express";
-import bodyParser from "body-parser";
+import morgan from "morgan";
 import sql from "mssql";
 import dotenv from "dotenv";
 import registration from "./routes/registration.route.js";
@@ -18,12 +18,15 @@ const config = {
   },
 };
 
+app.use(morgan("dev")); //console loging
+app.use(express.json()); //body parsing
+app.use(express.urlencoded({ extended: true })); //query string
+
+app.use("/registration", registration);
+
 sql.connect(config).then(async (pool) => {
   app.locals.db = pool;
   app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`);
   });
 });
-
-app.use(bodyParser.json());
-app.use("/registration", registration);

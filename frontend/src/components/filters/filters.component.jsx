@@ -6,25 +6,35 @@ const Filters = ({
   currentSearchParams,
   handleFilter,
 }) => {
-  const semester = ["Fall", "Winter"];
-  const year = ["2024", "2025"];
-  const days = ["Monday-Wednesday-Friday", "Tuesday-Thursday"];
-  const timeslots = [
-    "8-9",
-    "9-10",
-    "10-11",
-    "11-12",
-    "12-1",
-    "1-2",
-    "2-3",
-    "3-4",
-    "4-5",
-    "5-6",
-    "8-10",
-    "10-12",
-    "12-2",
-    "2-4",
-    "4-6",
+  const semester = ["Semester", "Fall", "Winter"];
+  const year = ["Year", "2024", "2025"];
+  const days = ["Days", "Monday-Wednesday-Friday", "Tuesday-Thursday"];
+  const start_time = [
+    "Start-Time",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+  ];
+
+  const end_time = [
+    "End-Time",
+    "9",
+    "10",
+    "11",
+    "12",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
   ];
 
   return (
@@ -33,7 +43,7 @@ const Filters = ({
       <div className="filters-container">
         <FilterSelectionBox
           list={courseSymbols}
-          filterName={"symbol"}
+          filterName={"course_symbol"}
           setSearchParam={setSearchParams}
           currentSearchParams={currentSearchParams}
         ></FilterSelectionBox>
@@ -51,19 +61,19 @@ const Filters = ({
         ></FilterSelectionBox>
         <FilterSelectionBox
           list={days}
-          filterName={"days"}
+          filterName={"day"}
           setSearchParam={setSearchParams}
           currentSearchParams={currentSearchParams}
         ></FilterSelectionBox>
         <FilterSelectionBox
-          list={year}
-          filterName={"year"}
+          list={start_time}
+          filterName={"start_time"}
           setSearchParam={setSearchParams}
           currentSearchParams={currentSearchParams}
         ></FilterSelectionBox>
         <FilterSelectionBox
-          list={timeslots}
-          filterName={"timeslots"}
+          list={end_time}
+          filterName={"end_time"}
           setSearchParam={setSearchParams}
           currentSearchParams={currentSearchParams}
         ></FilterSelectionBox>
