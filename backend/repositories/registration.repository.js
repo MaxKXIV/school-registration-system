@@ -49,3 +49,22 @@ export const getCourseSymbolsFromRepository = async (req) => {
     throw Error("Failed to get Courses from database");
   }
 };
+
+/**
+ *
+ * @param {*} req
+ * @returns
+ */
+export const getSectionByIDFromRepository = async (req) => {
+  try {
+    const sectionInfo = await req.app.locals.db
+      .request()
+      .input("id", req.params.id)
+      .execute("spGetSectionByID");
+    const result = sectionInfo.recordset;
+    return result;
+  } catch (err) {
+    console.log(err);
+    throw Error("Failed to get Section from database");
+  }
+};

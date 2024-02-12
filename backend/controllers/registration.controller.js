@@ -1,6 +1,7 @@
 import {
   getClassesFromRepository,
   getCourseSymbolsFromRepository,
+  getSectionByIDFromRepository,
 } from "../repositories/registration.repository.js";
 
 /**
@@ -32,5 +33,22 @@ export const getCourseSymbols = async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(400).json({ message: "Failed to get symbols" });
+  }
+};
+
+/**
+ *
+ * @param {*} req request
+ * @param {*} res response
+ */
+export const getSectionByID = async (req, res) => {
+  try {
+    const section = await getSectionByIDFromRepository(req);
+    console.log(section);
+    res.header("Access-Control-Allow-Origin", "*");
+    res.status(200).json(section);
+  } catch (err) {
+    console.log(err);
+    res.status(400).json({ message: "Failed to get sections" });
   }
 };
