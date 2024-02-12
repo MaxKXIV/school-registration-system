@@ -10,7 +10,6 @@ const RegistrationPage = () => {
   const [currentSearchParams, setSearchParams] = useSearchParams();
   const [currentSymbols] = useCourseSymbols();
 
-  console.log(currentSymbols);
   useEffect(() => {
     const fetchSections = async () => {
       try {

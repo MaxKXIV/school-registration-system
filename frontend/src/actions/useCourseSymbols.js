@@ -1,20 +1,7 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
+import fetchSymbols from "./fetchSymbols";
 
 export const useCourseSymbols = () => {
-  const [currentSymbols, setSymbols] = useState(["Type"]);
-
-  useEffect(() => {
-    const requestCourseSymbols = async () => {
-      const courseSymbols = await axios.get(
-        "http://localhost:8080/registration/getcourses",
-      );
-      setSymbols((currentSymbols) => [
-        ...currentSymbols,
-        ...courseSymbols.data,
-      ]);
-    };
-    requestCourseSymbols();
-  }, []);
-  return [currentSymbols];
+  const results = useQuery({ queryKey: ["symbols"], queryFn: fetchSymbols });
+  return [results?.data ?? [], results.status];
 };

@@ -1,8 +1,8 @@
 import "./section.styles.css";
-
+import { Link } from "react-router-dom";
 const Section = ({ section }) => {
   const {
-    // section_id,
+    id,
     semester,
     year,
     course_symbol,
@@ -12,23 +12,26 @@ const Section = ({ section }) => {
     day,
     capacity,
   } = section;
+
   return (
-    <div className="section-container">
-      <div className="section-title">
-        <h2>{course_symbol}</h2>
-        <h2>{course_number}</h2>
+    <Link to={`/registration/${id}`}>
+      <div className="section-container">
+        <div className="section-title">
+          <h2>{course_symbol}</h2>
+          <h2>{course_number}</h2>
+        </div>
+        <div className="section-body">
+          <p>{semester}</p>
+          <p>{year}</p>
+          <p>{capacity}</p>
+        </div>
+        <div className="section-body">
+          <p>{day}</p>
+          <p>{start_time}</p>
+          <p>{end_time}</p>
+        </div>
       </div>
-      <div className="section-body">
-        <p>{semester}</p>
-        <p>{year}</p>
-        <p>{capacity}</p>
-      </div>
-      <div className="section-body">
-        <p>{day}</p>
-        <p>{start_time}</p>
-        <p>{end_time}</p>
-      </div>
-    </div>
+    </Link>
   );
 };
 
