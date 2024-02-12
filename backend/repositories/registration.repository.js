@@ -68,3 +68,22 @@ export const getSectionByIDFromRepository = async (req) => {
     throw Error("Failed to get Section from database");
   }
 };
+
+/**
+ *
+ * @param {*} req
+ * @returns
+ */
+export const getCartByStudentIDFromRepository = async (req) => {
+  try {
+    const sectionInfo = await req.app.locals.db
+      .request()
+      .input("student_id", req.params.id)
+      .execute("spGetCartByStudentID");
+    const result = sectionInfo.recordset;
+    return result;
+  } catch (err) {
+    console.log(err);
+    throw Error("Failed to get Cart from database");
+  }
+};

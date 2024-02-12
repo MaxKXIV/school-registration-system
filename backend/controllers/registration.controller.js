@@ -1,4 +1,5 @@
 import {
+  getCartByStudentIDFromRepository,
   getClassesFromRepository,
   getCourseSymbolsFromRepository,
   getSectionByIDFromRepository,
@@ -50,5 +51,21 @@ export const getSectionByID = async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(400).json({ message: "Failed to get sections" });
+  }
+};
+
+/**
+ *
+ * @param {*} req request
+ * @param {*} res response
+ */
+export const getCartByID = async (req, res) => {
+  try {
+    const cart = await getCartByStudentIDFromRepository(req);
+    res.header("Access-Control-Allow-Origin", "*");
+    res.status(200).json(cart);
+  } catch (err) {
+    console.log(err);
+    res.status(400).json({ message: "Failed to get Cart" });
   }
 };
