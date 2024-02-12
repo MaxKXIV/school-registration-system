@@ -30,8 +30,8 @@ sql.connect(config).then(async () => {
   table.columns.add("year", sql.Int, { nullable: false });
   table.columns.add("course_symbol", sql.NChar(10), { nullable: false });
   table.columns.add("course_number", sql.Int, { nullable: false });
-  table.columns.add("start_time", sql.Time(7), { nullable: true });
-  table.columns.add("end_time", sql.Time(7), { nullable: true });
+  table.columns.add("start_time", sql.SmallInt, { nullable: true });
+  table.columns.add("end_time", sql.SmallInt, { nullable: true });
   table.columns.add("day", sql.SmallInt, { nullable: true });
   table.columns.add("capacity", sql.Int, { nullable: false });
   table.columns.add("teacher_id", sql.Int, { nullable: true });
@@ -43,24 +43,24 @@ sql.connect(config).then(async () => {
   const teachers = sql.query`select * from teachers`;
   const classrooms = sql.query`select * from classrooms`;
   const MWF = [
-    [8, 9],
-    [9, 10],
-    [10, 11],
-    [11, 12],
-    [12, 1],
-    [1, 2],
-    [2, 3],
-    [3, 4],
-    [4, 5],
-    [5, 6],
+    [480, 540],
+    [540, 600],
+    [600, 660],
+    [660, 720],
+    [720, 780],
+    [780, 840],
+    [840, 900],
+    [900, 960],
+    [960, 1020],
+    [1020, 1080],
   ];
 
   const TT = [
-    [8, 10],
-    [10, 12],
-    [12, 2],
-    [2, 4],
-    [4, 6],
+    [480, 600],
+    [600, 720],
+    [720, 840],
+    [840, 960],
+    [960, 1080],
   ];
 
   const semester = ["Fall", "Winter"];
