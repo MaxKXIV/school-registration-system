@@ -87,3 +87,22 @@ export const getCartByStudentIDFromRepository = async (req) => {
     throw Error("Failed to get Cart from database");
   }
 };
+//prereqs and already not enrolled time conflicts
+/**
+ *
+ * @param {*} req
+ * @returns
+ */
+export const insertIntoCartByRepository = async (req) => {
+  try {
+    const sectionInfo = await req.app.locals.db
+      .request()
+      .input("student_id", req.params.id)
+      .execute("spGetCartByStudentID");
+    const result = sectionInfo.recordset;
+    return result;
+  } catch (err) {
+    console.log(err);
+    throw Error("Failed to get Cart from database");
+  }
+};
