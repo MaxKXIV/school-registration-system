@@ -32,8 +32,10 @@ const SectionPage = () => {
         id: id,
         student_id: student_id,
       })
-      .then((response) => {
-        console.log(response.status);
+      .then()
+      .catch((err) => {
+        console.log(err);
+        alert("could not add to cart, check your prereqs");
       });
   };
 

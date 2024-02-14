@@ -95,16 +95,54 @@ export const getCartByStudentIDFromRepository = async (req) => {
  * @param {*} req
  * @returns
  */
-export const insertIntoCartByRepository = async (req) => {
+export const checkPrereqsByRepository = async (req) => {
   try {
-    const sectionInfo = await req.app.locals.db
+    return await req.app.locals.db
       .request()
-      .input("student_id", req.params.id)
-      .execute("spGetCartByStudentID");
-    const result = sectionInfo.recordset;
-    return result;
+      .input("section_id", req.body.id)
+      .input("student_id", req.body.student_id)
+      .execute("spCheckPrereqs")
+      .then((result) => {
+        if (result.recordset[0].numPrereqsTaken === 0) {
+          return -1;
+        } else {
+          return 1;
+        }
+      });
   } catch (err) {
     console.log(err);
-    throw Error("Failed to get Cart from database");
+    throw Error("Failed to query database");
+  }
+};
+
+export const checkSectionsPrereqsByRepositry = async (req) => {
+  try {
+    return await req.app.locals.db
+      .request()
+      .input("section_id", req.body.id)
+      .execute("spCheckSectionPrereqs")
+      .then((result) => {
+        if (result.recordset.length === 0) {
+          return -1;
+        } else {
+          return 1;
+        }
+      });
+  } catch (err) {
+    console.log(err);
+    throw Error("Failed to query database");
+  }
+};
+
+export const insertIntoCartByRepository = async (req) => {
+  try {
+    return await req.app.locals.db
+      .request()
+      .input("section_id", req.body.id)
+      .input("student_id", req.body.student_id)
+      .execute("spInsertIntoCart");
+  } catch (err) {
+    console.log(err);
+    throw Error("Failed to insert into database");
   }
 };

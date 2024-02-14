@@ -12,6 +12,6 @@ create or alter proc [dbo].[spGetCartByStudentID]
 @student_id [int]
 as
 begin
-select sections.id,section_id,semester,year,course_symbol,course_number,start_time,end_time,day,capacity,teacher_id,room_number from cart,sections where student_id = @student_id AND cart.id = sections.id;
+select sections.id,section_id,semester,year,course_symbol,course_number,start_time,end_time,day,capacity,teacher_id from cart,sections where student_id = @student_id AND cart.id = sections.id;
 end
 GO

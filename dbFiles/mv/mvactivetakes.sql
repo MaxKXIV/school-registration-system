@@ -24,12 +24,12 @@ FROM
     dbo.sections
 WHERE 
     students.active = 1 
-    AND sections.year < 2024
     AND students.student_id = takes.student_id
     AND takes.id = sections.id;
 GO
 
-CREATE UNIQUE CLUSTERED INDEX uci_activetakes
-on [dbo].[mvactivetakes](student_id)
+CREATE UNIQUE CLUSTERED INDEX UCI_activetakes
+on [dbo].[mvactivetakes](student_id,id)
 GO
 
+create nonclustered index NCI_activetakescourse on mvactivetakes(course_symbol,course_number)

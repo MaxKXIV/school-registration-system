@@ -8,7 +8,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-create proc [dbo].[spGetSectionByID]
+create or alter proc [dbo].[spGetSectionByID]
 @id[int] 
 As
 BEGIN
