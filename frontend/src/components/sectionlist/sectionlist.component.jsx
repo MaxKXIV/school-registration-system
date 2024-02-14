@@ -1,6 +1,5 @@
 import "./sectionlist.styles.css";
 import Section from "../section/section.component";
-// import Class from "../class/class.component";
 const SectionList = ({ sectionList }) => {
   return (
     <div>

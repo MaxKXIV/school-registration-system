@@ -1,6 +1,6 @@
-import "./section.styles.css";
+import "./cartsection.styles.css";
 import { Link } from "react-router-dom";
-const Section = ({ section }) => {
+const CartSection = ({ section, handleRegister, handleDelete }) => {
   const {
     id,
     semester,
@@ -33,8 +33,10 @@ const Section = ({ section }) => {
           </div>
         </div>
       </Link>
+      <button onClick={() => handleRegister(id)}>Register</button>
+      <button onClick={() => handleDelete(id)}>Remove From Cart</button>
     </div>
   );
 };
 
-export default Section;
+export default CartSection;

@@ -32,7 +32,9 @@ const SectionPage = () => {
         id: id,
         student_id: student_id,
       })
-      .then()
+      .then(() => {
+        alert("added to cart");
+      })
       .catch((err) => {
         console.log(err);
         alert("could not add to cart, check your prereqs");
