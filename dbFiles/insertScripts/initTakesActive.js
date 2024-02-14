@@ -21,16 +21,19 @@ sql.connect(config).then(async () => {
   table.columns.add("grades", sql.SmallInt, { nullable: true });
 
   const sectionsInactive =
-    await sql.query`select top(40) id from sections where year<2023`;
-  const studentsInactive =
-    await sql.query`select * from students where active = 0`;
+    await sql.query`select top(20) id from sections where year<2024`;
+  const studentsActive =
+    await sql.query`select * from students where active = 1 AND student_id!=1`;
+  // [id] [int] NOT NULL,
+  // [student_id] [int] NOT NULL,
+  // [grades] [smallInt] NULL,
 
-  Promise.all([sectionsInactive, studentsInactive]).then((result) => {
+  Promise.all([sectionsInactive, studentsActive]).then((result) => {
     const request = new sql.Request();
     let i = 0;
     result[0].recordset.forEach((section) => {
       result[1].recordset.forEach((student) => {
-        table.rows.add(section.id, student.student_id, 40);
+        table.rows.add(section.id, student.student_id, 20);
         if (i === 100000) {
           request.bulk(table, (err, result) => {
             if (err) {

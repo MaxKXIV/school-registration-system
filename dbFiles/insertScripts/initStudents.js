@@ -23,7 +23,7 @@ const config = {
 parser.on("readable", () => {
   let name;
   const regex = /^[a-zA-Z]+$/; //true on only aA-zZ charaters
-  let active = 0;
+  let active = 1;
   //pushes name to the list of names
   while ((name = parser.read()) !== null) {
     //removes all names that are not alphabetic
