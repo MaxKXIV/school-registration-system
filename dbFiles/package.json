@@ -10,7 +10,8 @@
     "init-prereqs": "node ./insertScripts/initPrereqs.js",
     "init-teachers": "node ./insertScripts/initTeachers.js",
     "init-sections": "node ./insertScripts/initSections.js",
-    "init-taken": "node ./insertScripts/initTakes.js"
+    "init-taken": "node ./insertScripts/initTakes.js",
+    "init-taken-active": "node ./insertScripts/initTakesActive.js"
   },
   "author": "",
   "license": "ISC",

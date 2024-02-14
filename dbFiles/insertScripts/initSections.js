@@ -34,14 +34,14 @@ sql.connect(config).then(async () => {
   table.columns.add("end_time", sql.SmallInt, { nullable: true });
   table.columns.add("day", sql.SmallInt, { nullable: true });
   table.columns.add("capacity", sql.Int, { nullable: false });
-  table.columns.add("teacher_id", sql.Int, { nullable: true });
-  table.columns.add("room_number", sql.NChar(10), { nullable: true });
+  table.columns.add("teacher_id", sql.Int, { nullable: false });
+  // table.columns.add("room_number", sql.NChar(10), { nullable: true });
 
   const queryString =
-    "select courses.course_symbol,courses.course_number,courses.course_name from courses left join prereqs on courses.course_symbol=prereqs.course_symbol AND courses.course_number=prereqs.course_number where prereqs.course_symbol IS NULL";
+    "select courses.course_symbol,courses.course_number,courses.course_name from courses";
   const courses = getCourses(queryString, sql);
   const teachers = sql.query`select * from teachers`;
-  const classrooms = sql.query`select * from classrooms`;
+  // const classrooms = sql.query`select * from classrooms`;
   const MWF = [
     [480, 540],
     [540, 600],
@@ -66,13 +66,12 @@ sql.connect(config).then(async () => {
   const semester = ["Fall", "Winter"];
   const DAY = [84, 40];
   // Mock data will have null for teachers/rooms/start/end/day
-  Promise.all([courses, teachers, classrooms]).then((results) => {
+  Promise.all([courses, teachers /*, classrooms*/]).then((results) => {
     const courses = results[0];
     const teacherLength = results[1].recordset.length;
     let counter = 0;
-    console.log(results[2].recordset);
     //Years
-    for (let i = 2005; i <= 2024; i++) {
+    for (let i = 2005; i <= 2025; i++) {
       //Semester
       for (let j = 0; j < 2; j++) {
         //type of class
@@ -92,7 +91,7 @@ sql.connect(config).then(async () => {
                 DAY[k], //day
                 20, //capacity
                 (counter % teacherLength) + 1, //teacher
-                null, //room_number
+                // null, //room_number - removed room_number
               );
               counter++;
             }

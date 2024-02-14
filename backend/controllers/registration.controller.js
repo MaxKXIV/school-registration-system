@@ -1,7 +1,11 @@
 import {
+  getCartByStudentIDFromRepository,
   getClassesFromRepository,
   getCourseSymbolsFromRepository,
   getSectionByIDFromRepository,
+  checkPrereqsByRepository,
+  checkSectionsPrereqsByRepositry,
+  insertIntoCartByRepository,
 } from "../repositories/registration.repository.js";
 
 /**
@@ -50,5 +54,59 @@ export const getSectionByID = async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(400).json({ message: "Failed to get sections" });
+  }
+};
+
+/**
+ *
+ * @param {*} req request
+ * @param {*} res response
+ */
+export const getCartByID = async (req, res) => {
+  try {
+    const cart = await getCartByStudentIDFromRepository(req);
+    res.header("Access-Control-Allow-Origin", "*");
+    res.status(200).json(cart);
+  } catch (err) {
+    console.log(err);
+    res.status(400).json({ message: "Failed to get Cart" });
+  }
+};
+
+export const insertIntoCart = async (req, res) => {
+  try {
+    const isPrereqs = await checkSectionsPrereqsByRepositry(req);
+    const userHavePrereqs = await checkPrereqsByRepository(req);
+    Promise.all([isPrereqs, userHavePrereqs]).then(async (results) => {
+      if (results[0] > 0) {
+        if (results[1] > 0) {
+          await insertIntoCartByRepository(req)
+            .then(() => {
+              res.header("Access-Control-Allow-Origin", "*");
+              res.status(200).send();
+            })
+            .catch((err) => {
+              console.log(err);
+              res.status(500).json({ message: "Internal Server Error" });
+            });
+        } else {
+          console.log("failed");
+          res.status(400).json({ message: "Failed to verify prereqs" });
+        }
+      } else {
+        await insertIntoCartByRepository(req)
+          .then(() => {
+            res.header("Access-Control-Allow-Origin", "*");
+            res.status(200).send();
+          })
+          .catch((err) => {
+            console.log(err);
+            res.status(500).json({ message: "Internal Server Error" });
+          });
+      }
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(400).json({ message: "Failed to get Cart" });
   }
 };

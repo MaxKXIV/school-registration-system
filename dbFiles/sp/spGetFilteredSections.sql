@@ -8,7 +8,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE PROC [dbo].[spGetFilteredSections]
+CREATE OR ALTER PROC [dbo].[spGetFilteredSections]
 	@course_symbol [nchar](10) = NULL,
 	@course_number int = NULL,
 	@semester [nvarchar](50) = NULL,
@@ -19,7 +19,7 @@ CREATE PROC [dbo].[spGetFilteredSections]
 	AS
 	Begin
 	SELECT TOP 30 * 
-	FROM sections 
+	FROM mvcurrentcourses 
 	WHERE 
 	(course_symbol = @course_symbol OR @course_symbol IS NULL)
 	AND 

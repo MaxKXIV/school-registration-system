@@ -23,6 +23,7 @@ const config = {
 parser.on("readable", () => {
   let name;
   const regex = /^[a-zA-Z]+$/; //true on only aA-zZ charaters
+  let active = 1;
   //pushes name to the list of names
   while ((name = parser.read()) !== null) {
     //removes all names that are not alphabetic
@@ -33,7 +34,9 @@ parser.on("readable", () => {
     if (name[2] !== "") {
       //Adds the active status to the name
       const nameWithActive = name.slice(0, 3);
-      nameWithActive.push(Math.round(Math.random())); //random if active
+      nameWithActive.push(active);
+      active = active === 0 ? 1 : 0; //alternates between active and not
+      // nameWithActive.push(Math.round(Math.random())); //random if active
       names.push(nameWithActive);
     }
   }

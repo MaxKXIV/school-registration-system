@@ -8,11 +8,11 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-create proc [dbo].[spGetSectionByID]
+create or alter proc [dbo].[spGetSectionByID]
 @id[int] 
 As
 BEGIN
-	select * from sections 
+	select * from mvcurrentcourses 
 	where id=@id
 END
 GO
