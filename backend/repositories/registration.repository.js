@@ -16,6 +16,8 @@ export const getClassesFromRepository = async (req) => {
       //replaces the day with proper values in db
       if (symbol === "day") {
         query.input(symbol, req.query[symbol] === "Tuesday-Thursday" ? 40 : 84);
+      } else if (symbol === "start_time" || symbol === "end_time") {
+        query.input(symbol, req.query[symbol] * 60);
       } else {
         query.input(symbol, req.query[symbol]);
       }

@@ -24,23 +24,21 @@ SELECT
 	sections.course_symbol,
 	sections.course_number,
 	courses.course_name,
-	courses.credits,
-	classrooms.building,
-	classrooms.room_number,
-	classrooms.capacity
+	courses.credits
 FROM
 	dbo.teachers,
 	dbo.sections,
-	dbo.courses,
-	dbo.classrooms
+	dbo.courses
 WHERE
 	sections.year > 2023
 	AND sections.course_symbol = courses.course_symbol
 	AND sections.course_number = courses.course_number
 	AND teachers.teacher_id = sections.teacher_id
-	AND sections.room_number = classrooms.room_number
 GO
 
 create unique clustered index UCI_currentcourses
 on [dbo].[mvcurrentcourses](id)
 GO
+
+create nonclustered index NCI_currentcourses on mvcurrentcourses(course_symbol)
+
