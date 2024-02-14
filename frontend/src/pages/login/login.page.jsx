@@ -1,16 +1,17 @@
-import { Link } from "react-router-dom";
 import "./login.styles.css";
+// import checkLogin from "../../actions/checkLogin";
 import LoginBox from "../../components/loginbox/loginbox.compenent";
 
 const LoginPage = () => {
+  let currentPassword = "";
+  let currentUsername = "";
+  console.log(currentPassword);
+  console.log(currentUsername);
+
   return (
     <div className="login-container">
-      <Link to={"/registration"}>
-        <h1>LOGIN PAGE</h1>
-      </Link>
-      <div>
-        <LoginBox></LoginBox>
-      </div>
+      <h1>LOGIN PAGE</h1>
+      <LoginBox></LoginBox>
     </div>
   );
 };

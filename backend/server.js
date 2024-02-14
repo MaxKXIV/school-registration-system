@@ -3,6 +3,7 @@ import morgan from "morgan";
 import sql from "mssql";
 import dotenv from "dotenv";
 import registration from "./routes/registration.route.js";
+import login from "./routes/login.route.js";
 import cors from "cors";
 dotenv.config();
 
@@ -29,6 +30,7 @@ app.use(morgan("dev")); //console loging
 app.use(express.json()); //body parsing
 app.use(express.urlencoded({ extended: true })); //query string
 app.use("/registration", registration);
+app.use("/login", login);
 
 sql.connect(config).then(async (pool) => {
   app.locals.db = pool;
