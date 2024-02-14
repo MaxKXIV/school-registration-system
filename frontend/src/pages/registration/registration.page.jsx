@@ -59,11 +59,13 @@ const RegistrationPage = () => {
           handleFilter={handleFilter}
         ></Filters>
         <Link to="/registration/cart/">
-          <button>🛒</button>
+          <div>
+            <p className="shopping-cart-button">CART 🛒</p>
+          </div>
         </Link>
       </div>
       <div className="sectionlist-container">
-        <h1>List</h1>
+        <h1>Courses</h1>
         <SectionList sectionList={currentSectionsList}></SectionList>
       </div>
     </div>

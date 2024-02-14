@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import "./section.styles.css";
+import "./section.page.styles.css";
 import { useQuery } from "@tanstack/react-query";
 import fetchSection from "../../actions/fetchSection";
 import axios from "axios";
@@ -42,19 +42,26 @@ const SectionPage = () => {
   };
 
   return (
-    <div>
-      <h1>Section</h1>
-      <h1>{section.id}</h1>
-      <p>{section.section_id}</p>
-      <p>{section.semester}</p>
-      <p>{section.year}</p>
-      <p>{section.course_symbol}</p>
-      <p>{section.course_number}</p>
-      <p>{section.start_time}</p>
-      <p>{section.end_time}</p>
-      <p>{section.teacher_id}</p>
-      <p>{section.room_number}</p>
-      <button onClick={handleAddToCart}>Add to cart</button>
+    <div className="section-page-container">
+      <div className="info-container">
+        <h1>{section.course_name}</h1>
+        <div>
+          <h2>
+            {`${section.course_symbol}
+            ${section.course_number}
+            ${section.section_id}`}
+          </h2>
+        </div>
+        <div>
+          <h3>{section.semester}</h3>
+          <h3>{section.year}</h3>
+        </div>
+        <div className="time-container">
+          <h3>{`Start Time - ${section.start_time / 60} End Time - ${section.end_time / 60}`}</h3>
+        </div>
+        <h4>{`Teacher: ${section.first_name} ${section.last_name}`}</h4>
+        <button onClick={handleAddToCart}>Add to cart</button>
+      </div>
     </div>
   );
 };

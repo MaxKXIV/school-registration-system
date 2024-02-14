@@ -8,7 +8,7 @@ const LoginBox = () => {
 
   return (
     <div className="loginbox-container">
-      <h1>Login</h1>
+      <h1>Nawecam Registration</h1>
       <input
         type="text"
         onChange={(e) => setUser(e.target.value)}

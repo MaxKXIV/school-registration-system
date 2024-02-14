@@ -13,3 +13,10 @@
   flex-direction: column;
   background-color: aqua;
 }
+
+.shopping-cart-button div {
+  text-decoration: none;
+  font-size: x-large;
+  height: 30px;
+  background-color: bisque;
+}

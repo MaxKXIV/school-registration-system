@@ -44,7 +44,7 @@ const CartPage = () => {
   return (
     <div className="registration-container">
       <div className="sectionlist-container">
-        <h1>List</h1>
+        <h1>Cart</h1>
         <CartList
           sectionList={currentCartList}
           handleRegister={handleRegister}
