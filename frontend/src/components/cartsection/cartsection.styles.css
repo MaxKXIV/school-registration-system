@@ -1,0 +1,13 @@
+.section-title {
+}
+
+.section-container {
+  margin: 3px;
+  border: 1px solid black;
+  background-color: aliceblue;
+  padding: 10px;
+}
+
+.section-container div {
+  display: flex;
+}

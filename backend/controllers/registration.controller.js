@@ -6,6 +6,8 @@ import {
   checkPrereqsByRepository,
   checkSectionsPrereqsByRepositry,
   insertIntoCartByRepository,
+  registerForClassByRepository,
+  deleteFromCartByRepository,
 } from "../repositories/registration.repository.js";
 
 /**
@@ -108,5 +110,38 @@ export const insertIntoCart = async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(400).json({ message: "Failed to get Cart" });
+  }
+};
+
+export const registerForClass = async (req, res) => {
+  try {
+    const result = await registerForClassByRepository(req);
+    console.log(result);
+    if (result) {
+      res.header("Access-Control-Allow-Origin", "*");
+      res.status(200).send();
+    } else {
+      res.status(400).json({ message: "Failed to register Cart" });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(400).json({ message: "Failed to register Cart" });
+  }
+};
+
+export const deleteFromCart = async (req, res) => {
+  console.log(req.body);
+  try {
+    const result = await deleteFromCartByRepository(req);
+    console.log(result);
+    if (result) {
+      res.header("Access-Control-Allow-Origin", "*");
+      res.status(200).send();
+    } else {
+      res.status(400).json({ message: "Failed to delete Cart" });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(400).json({ message: "Failed delete from Cart" });
   }
 };

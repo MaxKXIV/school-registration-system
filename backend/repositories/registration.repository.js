@@ -146,3 +146,29 @@ export const insertIntoCartByRepository = async (req) => {
     throw Error("Failed to insert into database");
   }
 };
+
+export const registerForClassByRepository = async (req) => {
+  try {
+    return await req.app.locals.db
+      .request()
+      .input("section_id", req.body.id)
+      .input("student_id", req.body.student_id)
+      .execute("spRegisterForClass");
+  } catch (err) {
+    console.log(err);
+    throw Error("Failed to insert into database");
+  }
+};
+
+export const deleteFromCartByRepository = async (req) => {
+  try {
+    return await req.app.locals.db
+      .request()
+      .input("section_id", req.body.id)
+      .input("student_id", req.body.student_id)
+      .execute("spDeleteFromCart");
+  } catch (err) {
+    console.log(err);
+    throw Error("Failed to delete from database");
+  }
+};
