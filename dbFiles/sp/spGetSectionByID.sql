@@ -12,7 +12,7 @@ create proc [dbo].[spGetSectionByID]
 @id[int] 
 As
 BEGIN
-	select * from sections 
+	select * from mvcurrentcourses 
 	where id=@id
 END
 GO

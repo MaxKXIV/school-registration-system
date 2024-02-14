@@ -3,6 +3,7 @@ import morgan from "morgan";
 import sql from "mssql";
 import dotenv from "dotenv";
 import registration from "./routes/registration.route.js";
+import cors from "cors";
 dotenv.config();
 
 const app = express();
@@ -17,11 +18,16 @@ const config = {
     trustServerCertificate: true,
   },
 };
-
+//i hate cors
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
+  }),
+);
 app.use(morgan("dev")); //console loging
 app.use(express.json()); //body parsing
 app.use(express.urlencoded({ extended: true })); //query string
-
 app.use("/registration", registration);
 
 sql.connect(config).then(async (pool) => {

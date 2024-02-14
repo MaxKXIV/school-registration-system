@@ -69,3 +69,8 @@ export const getCartByID = async (req, res) => {
     res.status(400).json({ message: "Failed to get Cart" });
   }
 };
+
+export const insertIntoCart = async (req, res) => {
+  console.log(req.body);
+  res.status(200).json();
+};
