@@ -1,5 +1,24 @@
 # School Registration System
 
+## Table of Contents
+
+<ul>
+  <li><a href='#er-diagram'>ER Diagram</a></li>
+  <li><a href='#tables'>Tables</a></li>
+  <li><a href='#to-use-insert-scripts'>To Use Insert Scripts</a></li>
+  <li><a href='#requirments'>Requirements</a></li>
+  <li><a href='#available-scripts'>Available Scripts</a></li>
+  <li><a href='#troubleshooting'>Troubleshooting</a></li>
+</ul>
+
+## ER Diagram
+
+<img src='./images/er-diagram.png'/>
+
+## Tables
+
+<img src='./images/tables.png'>
+
 ## TO USE INSERT SCRIPTS
 
 - Create .env
@@ -48,10 +67,6 @@ Runs the initPrereqs.js file and generates prereqs for some courses
 ### `npm run init-teachers`
 
 Runs the initTeacherss.js file and generates teachers
-
-## ER Diagram
-
-<img src='./images/er-diagram.png'/>
 
 ## Troubleshooting
 

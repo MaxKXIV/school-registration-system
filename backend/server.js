@@ -1,9 +1,9 @@
 import express from "express";
 import morgan from "morgan";
 import sql from "mssql";
-import dotenv from "dotenv";
 import registration from "./routes/registration.route.js";
 import login from "./routes/login.route.js";
+import dotenv from "dotenv";
 import cors from "cors";
 dotenv.config();
 
@@ -24,7 +24,7 @@ app.use(
   cors({
     origin: "*",
     methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
-  }),
+  })
 );
 app.use(morgan("dev")); //console loging
 app.use(express.json()); //body parsing
